@@ -4,12 +4,6 @@ namespace Reliese\Meta\SqlServer;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Fluent;
-
-/**
- * SQLServer Column Metadata Handling
- * Adapted from PostgreSQL Column implementation
- * Date: 2024-12-07
- */
 class Column implements \Reliese\Meta\Column
 {
     /**
@@ -71,7 +65,7 @@ class Column implements \Reliese\Meta\Column
      */
     protected function parseType(Fluent $attributes)
     {
-        $dataType = $this->get('data_type', 'varchar');
+        $dataType = $this->get('DATA_TYPE', 'varchar');
         $attributes['type'] = $dataType;
 
         foreach (static::$mappings as $phpType => $database) {
@@ -167,6 +161,6 @@ class Column implements \Reliese\Meta\Column
      */
     protected function get($key, $default = null)
     {
-        return Arr::get($this->metadata, $key, $default);
+        return Arr::get($this->metadata, strtoupper($key), $default);
     }
 }
