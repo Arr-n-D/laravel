@@ -1,6 +1,6 @@
 <?php
 
-namespace Reliese\Meta\SQLServer;
+namespace Reliese\Meta\SqlServer;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Fluent;
